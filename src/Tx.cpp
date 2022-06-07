@@ -1,9 +1,7 @@
 #include "config.h"
-// #include "printf.h"
-State packet;
-uint16_t lockedThrust;
 
 uint8_t address[][6] = {"bird", "nest"};
+uint16_t lockedThrust;
 
 void Tx::prepare()
 {

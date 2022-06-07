@@ -1,0 +1,12 @@
+{
+  "additionalFiles": "../../../..,../..,../..,../..,..",
+  "builtInLibrariesFolders": "",
+  "builtInToolsFolders": "",
+  "compiler.optimization_flags": "",
+  "customBuildProperties": "",
+  "fqbn": "Seeeduino:samd:seeed_XIAO_m0",
+  "hardwareFolders": "/home/lsm/.arduino15/packages",
+  "otherLibrariesFolders": "/home/lsm/Arduino/libraries",
+  "runtime.ide.version": "10607",
+  "sketchLocation": "/home/lsm/Documents/PlatformIO/Projects/i2cInputs/i2cInputs.ino"
+}

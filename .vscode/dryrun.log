@@ -1,5 +1,6 @@
-make --dry-run --keep-going --print-directory
+make build --dry-run --keep-going --print-directory
 make: Entering directory '/home/lsm/Documents/PlatformIO/Projects/GroundControl'
-gcc -Wall -x c++ -o build/ground_control src/main.cpp -lwiringPi
+ssh raspberrypi.local "g++ -Wall -Wno-narrowing -o ~/firmware/GroundControl.fw ~/firmware/GroundControl/src/*.cpp ~/firmware/GroundControl/src/LCD/*.c ~/firmware/GroundControl/src/LCD/Fonts/*.c ~/firmware/GroundControl/src/LCD/GUI/*.c -lpigpio -lrt -lrf24 "
+ssh raspberrypi.local "arduino-cli upload -p /dev/ttyACM0 -b Seeeduino:samd:seeed_XIAO_m0 --input-dir ~/firmware/GroundControl/src/Input"
 make: Leaving directory '/home/lsm/Documents/PlatformIO/Projects/GroundControl'
  

@@ -1,0 +1,32 @@
+[
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "/home/lsm/.arduino15/packages/Seeeduino/hardware/samd/1.8.3/cores/arduino"
+  },
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "/home/lsm/.arduino15/packages/Seeeduino/hardware/samd/1.8.3/variants/XIAO_m0"
+  },
+  {
+    "Sourcefile": "/home/lsm/Documents/PlatformIO/Projects/GroundControl/src/Input/sketch/i2cInputs.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/lsm/Documents/PlatformIO/Projects/GroundControl/src/Input/sketch/main.cpp",
+    "Include": "Wire.h",
+    "Includepath": "/home/lsm/.arduino15/packages/Seeeduino/hardware/samd/1.8.3/libraries/Wire"
+  },
+  {
+    "Sourcefile": "/home/lsm/Documents/PlatformIO/Projects/GroundControl/src/Input/sketch/main.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/lsm/.arduino15/packages/Seeeduino/hardware/samd/1.8.3/libraries/Wire/Wire.cpp",
+    "Include": "",
+    "Includepath": null
+  }
+]

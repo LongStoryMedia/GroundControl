@@ -1,32 +1,34 @@
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef _CONFIG_LOCAL_H
+#define _CONFIG_LOCAL_H
 
-#define DEBUG false
+#include <pigpio.h>
+#include <iostream>
+#include <stdint.h>
+#include <RF24/RF24.h>
+#include <RF24/nRF24L01.h>
 
-#include "types.h"
+#include "LCD/DEV_Config.h"
+#include "LCD/LCD_2inch.h"
+#include "LCD/GUI/GUI_Paint.h"
+#include "LCD/GUI/GUI_BMP.h"
 
-#if defined TFT
-#include <TFT_eSPI.h> // Hardware-specific library
-#else
-// #include <LiquidCrystal_I2C.h>
-#endif
-#include "../lib/RF24/RF24.h"
-#include "../lib/RF24/nRF24L01.h"
-#include "../lib/RF24/RF24.cpp"
-// #include <WiFi.h>
-
-#define THRUST_PIN 0
-#define YAW_PIN 0
-#define ROLL_PIN 0
-#define PITCH_PIN 0
 #define CE_PIN 0
 #define CSN_PIN 0
 
-#include "Tx.h"
-// #include "Lcd.h"
-#include "Tx.cpp"
+typedef struct Input
+{
+    int16_t yaw;
+    int16_t pitch;
+    int16_t roll;
+    uint16_t thrust;
+    uint8_t lockAlt;
+} Input;
 
-extern State packet;
-extern uint16_t lockedThrust;
+extern Input packet;
+
+#define RAW_INPUT_DATA_LEN 21
+
+#include "Controls.h"
+#include "Tx.h"
 
 #endif

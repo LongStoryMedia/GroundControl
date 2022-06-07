@@ -1,0 +1,6 @@
+make build --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/lsm/Documents/PlatformIO/Projects/i2cInputs'
+make: Leaving directory '/home/lsm/Documents/PlatformIO/Projects/i2cInputs'
+ 
+make: *** No rule to make target 'build'.
+
