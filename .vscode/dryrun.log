@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/lsm/Documents/PlatformIO/Projects/GroundControl'
+gcc -Wall -x c++ -o build/ground_control src/*.cpp -lwiringPi
+make: Leaving directory '/home/lsm/Documents/PlatformIO/Projects/GroundControl'
+ 
