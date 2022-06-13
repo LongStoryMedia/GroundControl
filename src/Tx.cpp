@@ -3,6 +3,7 @@
 uint8_t address[][6] = {"bird", "nest"};
 uint16_t lockedThrust;
 
+
 void Tx::prepare()
 {
     packet.thrust = 0;

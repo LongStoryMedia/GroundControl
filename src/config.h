@@ -24,7 +24,8 @@ typedef struct Input
     uint8_t lockAlt;
 } Input;
 
-extern Input packet;
+
+Input packet;
 
 #define RAW_INPUT_DATA_LEN 21
 

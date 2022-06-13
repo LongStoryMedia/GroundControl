@@ -1,7 +1,7 @@
 #ifndef _CONTROLS_LOCAL_H
 #define _CONTROLS_LOCAL_H
 
-Input packet;
+// Input packet;
 
 class Controls
 {

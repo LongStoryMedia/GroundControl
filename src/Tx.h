@@ -1,5 +1,6 @@
 #ifndef _TX_LOCAL_H
 #define _TX_LOCAL_H
+
 class Tx
 {
 private:

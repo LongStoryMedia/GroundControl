@@ -1,4 +1,4 @@
-#line 1 "/home/lsm/Documents/PlatformIO/Projects/i2cInputs/main.cpp"
+#line 1 "/Users/scott.long/Nextcloud/platformio/GroundControl/i2cInputs/main.cpp"
 #include <Arduino.h>
 #include <stdint.h>
 #include <Wire.h>
@@ -23,9 +23,9 @@ void postI2c()
   Wire.write(throttle);
   Wire.write("y");
   Wire.write(yaw);
-  Wire.write("r");
-  Wire.write(pitch);
   Wire.write("p");
+  Wire.write(pitch);
+  Wire.write("r");
   Wire.write(roll);
   Wire.write("a");
   Wire.write(lockAlt);
