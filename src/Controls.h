@@ -1,7 +1,9 @@
 #ifndef _CONTROLS_LOCAL_H
 #define _CONTROLS_LOCAL_H
 
-// Input packet;
+#define RAW_INPUT_DATA_LEN 21
+
+#include "Input.h"
 
 class Controls
 {
@@ -13,9 +15,7 @@ private:
     volatile char a[2];
 
 public:
-    Controls();
-    ~Controls();
-    void parse(char *raw);
+    Input parse(char *raw);
 };
 
 #endif

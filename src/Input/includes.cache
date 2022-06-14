@@ -2,30 +2,30 @@
   {
     "Sourcefile": null,
     "Include": "",
-    "Includepath": "/Users/scott.long/Library/Arduino15/packages/Seeeduino/hardware/samd/1.8.3/cores/arduino"
+    "Includepath": "/home/lsm/.arduino15/packages/Seeeduino/hardware/samd/1.8.3/cores/arduino"
   },
   {
     "Sourcefile": null,
     "Include": "",
-    "Includepath": "/Users/scott.long/Library/Arduino15/packages/Seeeduino/hardware/samd/1.8.3/variants/XIAO_m0"
+    "Includepath": "/home/lsm/.arduino15/packages/Seeeduino/hardware/samd/1.8.3/variants/XIAO_m0"
   },
   {
-    "Sourcefile": "/Users/scott.long/Nextcloud/platformio/GroundControl/src/Input/sketch/i2cInputs.ino.cpp",
+    "Sourcefile": "/home/lsm/Documents/PlatformIO/Projects/GroundControl/src/Input/sketch/i2cInputs.ino.cpp",
     "Include": "",
     "Includepath": null
   },
   {
-    "Sourcefile": "/Users/scott.long/Nextcloud/platformio/GroundControl/src/Input/sketch/main.cpp",
+    "Sourcefile": "/home/lsm/Documents/PlatformIO/Projects/GroundControl/src/Input/sketch/main.cpp",
     "Include": "Wire.h",
-    "Includepath": "/Users/scott.long/Library/Arduino15/packages/Seeeduino/hardware/samd/1.8.3/libraries/Wire"
+    "Includepath": "/home/lsm/.arduino15/packages/Seeeduino/hardware/samd/1.8.3/libraries/Wire"
   },
   {
-    "Sourcefile": "/Users/scott.long/Nextcloud/platformio/GroundControl/src/Input/sketch/main.cpp",
+    "Sourcefile": "/home/lsm/Documents/PlatformIO/Projects/GroundControl/src/Input/sketch/main.cpp",
     "Include": "",
     "Includepath": null
   },
   {
-    "Sourcefile": "/Users/scott.long/Library/Arduino15/packages/Seeeduino/hardware/samd/1.8.3/libraries/Wire/Wire.cpp",
+    "Sourcefile": "/home/lsm/.arduino15/packages/Seeeduino/hardware/samd/1.8.3/libraries/Wire/Wire.cpp",
     "Include": "",
     "Includepath": null
   }

@@ -1,4 +1,15 @@
-#include "config.h"
+
+#include <pigpio.h>
+#include <iostream>
+#include <stdint.h>
+
+#include "LCD/DEV_Config.h"
+#include "LCD/LCD_2inch.h"
+#include "LCD/GUI/GUI_Paint.h"
+#include "LCD/GUI/GUI_BMP.h"
+
+#include "Controls.h"
+#include "Tx.h"
 
 #define GREEN_PIN 4
 #define RED_PIN 27
@@ -8,7 +19,7 @@
 uint32_t t, p;
 
 Tx tx;
-
+Controls controls;
 
 int main(void)
 {
@@ -82,14 +93,19 @@ int main(void)
   LCD_2IN_Display((UBYTE *)BlackImage);
   int i2cHandle = i2cOpen(1, 0x08, 0);
 
+  tx.init();
+
   while (1)
   {
     char buffer[RAW_INPUT_DATA_LEN];
     if (i2cReadDevice(i2cHandle, buffer, RAW_INPUT_DATA_LEN) == RAW_INPUT_DATA_LEN)
     {
+
       // const char *inputData = (const char[1])buffer[0];
       // printf((const char *)buffer[0]);
+      Input input = controls.parse(buffer);
       std::cout << buffer;
+      tx.sendPacket(input);
     }
   }
 

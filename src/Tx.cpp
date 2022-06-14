@@ -1,32 +1,8 @@
-#include "config.h"
+#include "Tx.h"
+#include <iostream>
 
 uint8_t address[][6] = {"bird", "nest"};
 uint16_t lockedThrust;
-
-
-void Tx::prepare()
-{
-    packet.thrust = 0;
-    // constrain(map(analogRead(thrustPin), 0, 3600, 1000, 0), 0, 1000);
-    packet.roll = 0;
-    // constrain(map(analogRead(rollPin), 100, 3700, -500, 500), -500, 500);
-    packet.pitch = 0;
-    // constrain(map(analogRead(pitchPin), 100, 3550, 500, -500), -500, 500);
-    packet.yaw = 0;
-    // constrain(map(analogRead(yawPin), 100, 3550, -500, 500), -500, 500);
-    packet.thrust = (packet.thrust < 25 || packet.thrust > 1000) ? 0 : packet.thrust;
-    packet.roll = packet.roll > -25 && packet.roll < 25 ? 0 : packet.roll;
-    packet.pitch = packet.pitch > -25 && packet.pitch < 25 ? 0 : packet.pitch;
-    packet.yaw = packet.yaw > -25 && packet.yaw < 25 ? 0 : packet.yaw;
-    if (packet.lockAlt == 1 && lockedThrust == 0)
-    {
-        lockedThrust = packet.thrust;
-    }
-    else if (packet.lockAlt == 0 && lockedThrust > 0)
-    {
-        lockedThrust = 0;
-    }
-}
 
 void Tx::init()
 {
@@ -57,11 +33,11 @@ void Tx::init()
     // radio.printPrettyDetails(); // (larger) function that prints human readable data
 }
 
-void Tx::sendPacket()
+void Tx::sendPacket(Input inputPacket)
 {
     radio.flush_tx();
 
-    if (!radio.write(&packet, packetSize, true))
+    if (!radio.write(&inputPacket, packetSize, true))
     {
         failures++;
         radio.reUseTX();

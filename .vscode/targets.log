@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jun 13 12:41:04 2022
+# Make data base, printed on Tue Jun 14 09:41:02 2022
 
 # Variables
 
@@ -51,7 +49,7 @@ VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupp
 # environment
 _ = /usr/share/code/code
 # environment
-JOURNAL_STREAM = 8:54203
+JOURNAL_STREAM = 8:56851
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'makefile', line 1)
@@ -75,13 +73,11 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 2278
+MANAGERPID = 2354
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /home/lsm
-# makefile (from 'makefile', line 4)
-LIBLIST = pigpio  rt  rf24
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -91,7 +87,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxdxegedabagacad
 # environment
-SESSION_MANAGER = local/lsbook:@/tmp/.ICE-unix/2547,unix/lsbook:/tmp/.ICE-unix/2547
+SESSION_MANAGER = local/lsbook:@/tmp/.ICE-unix/2607,unix/lsbook:/tmp/.ICE-unix/2607
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -103,7 +99,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 50f7a6a796dd41deb6e688d137c1b644
+INVOCATION_ID = 823a1db8758d45eb96cd11244d60b24b
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # makefile (from 'makefile', line 2)
@@ -115,7 +111,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 5321
+GIO_LAUNCHED_DESKTOP_FILE_PID = 4593
 # automatic
 %F = $(notdir $%)
 # environment
@@ -134,7 +130,7 @@ OSH = /home/lsm/.oh-my-bash
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2477
+SSH_AGENT_PID = 2537
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -160,25 +156,25 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # makefile (from 'makefile', line 3)
-HOSTNAME := raspberrypi.local
+HOSTNAME := lsm@raspberrypi.local
 # environment
 MAKELEVEL := 0
 # environment
-PLATFORMIO_PATH = /home/lsm/.platformio/penv/bin:/home/lsm/.platformio/penv:/home/lsm/.platformio/python3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/lsfs/lsm/bin:/lsfs/lsm/bin
+PLATFORMIO_PATH = /home/lsm/.platformio/python3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/lsfs/lsm/bin:/lsfs/lsm/bin
 # default
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # environment
 PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/lsfs/lsm/bin:/lsfs/lsm/bin
-# makefile (from 'makefile', line 6)
+# makefile (from 'makefile', line 4)
 SRCS := ~/firmware/GroundControl/src/*.cpp ~/firmware/GroundControl/src/LCD/*.c ~/firmware/GroundControl/src/LCD/Fonts/*.c ~/firmware/GroundControl/src/LCD/GUI/*.c
 # environment
 SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-ffe028e4-71d2-4982-9cdf-ea6efcf077bd.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4d65c34b-2376-478a-8824-bb95a1a39ae2.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -237,8 +233,6 @@ PAGER = less
 LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
-# makefile (from 'makefile', line 5)
-LIBS = -lpigpio -lrt -lrf24 
 # automatic
 ^F = $(notdir $^)
 # default
@@ -260,9 +254,9 @@ PICO_SDK_PATH = /home/lsm/pico/pico-sdk
 # environment
 LANG = C
 # environment
-VSCODE_PID = 5321
+VSCODE_PID = 4593
 # variable set hash-table stats:
-# Load=123/1024=12%, Rehash=0, Collisions=18/166=11%
+# Load=121/1024=12%, Rehash=0, Collisions=18/155=12%
 
 # Pattern-specific Variable Values
 
@@ -270,9 +264,9 @@ VSCODE_PID = 5321
 
 # Directories
 
-# . (device 66306, inode 25836737): 9 files, no impossibilities.
+# . (device 66306, inode 25836737): 15 files, no impossibilities.
 
-# 9 files, no impossibilities in 1 directories.
+# 15 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -284,8 +278,11 @@ stop:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 27):
+#  recipe to execute (from 'makefile', line 25):
 	-ssh $(HOSTNAME) "pgrep $(NAME) | xargs sudo kill -2"
+ 
+make: *** No rule to make target 'all'.  Stop.
+
 
 # Not a target:
 all:
@@ -294,26 +291,30 @@ all:
 #  File does not exist.
 #  File has not been updated.
 
+.PHONY: echo-libs
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 flash-controls:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 15):
+#  recipe to execute (from 'makefile', line 13):
 	-ssh $(HOSTNAME) "arduino-cli upload -p /dev/ttyACM0 -b Seeeduino:samd:seeed_XIAO_m0 --input-dir $(DIR)/src/Input"
 
 start:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 23):
+#  recipe to execute (from 'makefile', line 21):
 	ssh $(HOSTNAME) "sudo $(DIR).fw > /dev/null 2>&1 &" > /dev/null 2>&1 &
 	# ssh $(HOSTNAME) "sudo $(DIR).fw"
 
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-13 12:39:45.106146713
+#  Last modified 2022-06-13 15:26:03.818736367
 #  File has been updated.
 #  Successfully updated.
 
@@ -337,7 +338,7 @@ reboot:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 30):
+#  recipe to execute (from 'makefile', line 28):
 	ssh $(HOSTNAME) "sudo reboot"
 
 flash: stop init start
@@ -345,41 +346,47 @@ flash: stop init start
 #  Modification time never checked.
 #  File has not been updated.
 
+echo-libs:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
 compile-core:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 12):
-	ssh $(HOSTNAME) "g++ -Wall -Wno-narrowing -o $(DIR).fw $(SRCS) $(LIBS)"
+#  recipe to execute (from 'makefile', line 10):
+	ssh $(HOSTNAME) "g++ -Wall -Wno-narrowing -o $(DIR).fw $(SRCS) $(shell for lib in $$(cat linklibs.txt); do printf -- " -l$${lib}";  done)"
 
 upload:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 18):
+#  recipe to execute (from 'makefile', line 16):
 	rsync -avzru --delete ./src $(HOSTNAME):$(DIR)
 
 compile-controls:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 9):
+#  recipe to execute (from 'makefile', line 7):
 	arduino-cli compile -b Seeeduino:samd:seeed_XIAO_m0 i2cInputs/main.cpp --build-path src/Input
 
 # files hash-table stats:
-# Load=14/1024=1%, Rehash=0, Collisions=0/32=0%
+# Load=16/1024=2%, Rehash=0, Collisions=0/35=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 24 / storage = 207 B / avg = 8 B
-# current buf: size = 8162 B / used = 207 B / count = 24 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 32 / storage = 270 B / avg = 8 B
+# current buf: size = 8162 B / used = 270 B / count = 32 / avg = 8 B
 
-# strcache performance: lookups = 46 / hit rate = 47%
+# strcache performance: lookups = 55 / hit rate = 41%
 # hash-table stats:
-# Load=24/8192=0%, Rehash=0, Collisions=1/46=2%
-# Finished Make data base on Mon Jun 13 12:41:04 2022
+# Load=32/8192=0%, Rehash=0, Collisions=1/55=2%
+# Finished Make data base on Tue Jun 14 09:41:02 2022
 
  

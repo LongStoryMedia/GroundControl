@@ -1,5 +1,5 @@
 NAME != basename $(CURDIR)
-DIR := ~/firmware$(NAME)
+DIR := ~/firmware/$(NAME)
 HOSTNAME := lsm@raspberrypi.local
 SRCS := $(DIR)/src/*.cpp $(DIR)/src/LCD/*.c $(DIR)/src/LCD/Fonts/*.c $(DIR)/src/LCD/GUI/*.c
 

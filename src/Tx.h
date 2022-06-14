@@ -1,6 +1,16 @@
 #ifndef _TX_LOCAL_H
 #define _TX_LOCAL_H
 
+#define CE_PIN 0
+#define CSN_PIN 0
+
+#include <stdint.h>
+
+#include <RF24/RF24.h>
+#include <RF24/nRF24L01.h>
+
+#include "Input.h"
+
 class Tx
 {
 private:
@@ -10,8 +20,7 @@ private:
     uint8_t failures;
 
 public:
-    void prepare();
-    void sendPacket();
+    void sendPacket(Input inputPacket);
     void init();
     RF24 radio = RF24(CE_PIN, CSN_PIN);
 };
