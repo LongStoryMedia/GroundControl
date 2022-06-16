@@ -1,13 +1,13 @@
 #ifndef _TX_LOCAL_H
 #define _TX_LOCAL_H
 
-#define CE_PIN 0
-#define CSN_PIN 0
+#define CE_PIN 18
+#define CSN_PIN 26
 
 #include <stdint.h>
 
-#include <RF24/RF24.h>
-#include <RF24/nRF24L01.h>
+#include "RF24/RF24.h"
+#include "RF24/nRF24L01.h"
 
 #include "Input.h"
 

@@ -1,4 +1,4 @@
-#line 1 "/home/lsm/Documents/PlatformIO/Projects/GroundControl/i2cInputs/main.cpp"
+#line 1 "/Users/scott.long/Nextcloud/platformio/GroundControl/i2cInputs/main.cpp"
 #include <Arduino.h>
 #include <stdint.h>
 #include <Wire.h>

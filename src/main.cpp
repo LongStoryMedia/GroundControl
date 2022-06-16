@@ -34,7 +34,7 @@ int main(void)
   // // tx.init();
   // // while (1)
   // // {
-  gpioWrite(LED_PIN, 1);
+  gpioWrite(LED_PIN, 0);
   gpioPWM(GREEN_PIN, 5);
   gpioPWM(RED_PIN, 175);
   gpioPWM(BLUE_PIN, 0);

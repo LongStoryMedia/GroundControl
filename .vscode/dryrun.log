@@ -1,6 +1,5 @@
-make build --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/lsm/Documents/PlatformIO/Projects/GroundControl'
-ssh lsm@raspberrypi.local "g++ -Wall -Wno-narrowing -o ~/firmware/GroundControl.fw ~/firmware/GroundControl/src/*.cpp ~/firmware/GroundControl/src/LCD/*.c ~/firmware/GroundControl/src/LCD/Fonts/*.c ~/firmware/GroundControl/src/LCD/GUI/*.c  -lpigpio -lrt -lrf24"
-ssh lsm@raspberrypi.local "arduino-cli upload -p /dev/ttyACM0 -b Seeeduino:samd:seeed_XIAO_m0 --input-dir ~/firmware/GroundControl/src/Input"
-make: Leaving directory '/home/lsm/Documents/PlatformIO/Projects/GroundControl'
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/scott.long/Nextcloud/platformio/GroundControl'
+arduino-cli compile -b Seeeduino:samd:seeed_XIAO_m0 i2cInputs/main.cpp --build-path src/Input
+make: Leaving directory `/Users/scott.long/Nextcloud/platformio/GroundControl'
  

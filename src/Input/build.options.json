@@ -5,8 +5,8 @@
   "compiler.optimization_flags": "",
   "customBuildProperties": "",
   "fqbn": "Seeeduino:samd:seeed_XIAO_m0",
-  "hardwareFolders": "/home/lsm/.arduino15/packages",
-  "otherLibrariesFolders": "/home/lsm/Arduino/libraries",
+  "hardwareFolders": "/Users/scott.long/Library/Arduino15/packages",
+  "otherLibrariesFolders": "/Users/scott.long/libraries",
   "runtime.ide.version": "10607",
-  "sketchLocation": "/home/lsm/Documents/PlatformIO/Projects/GroundControl/i2cInputs/i2cInputs.ino"
+  "sketchLocation": "/Users/scott.long/Nextcloud/platformio/GroundControl/i2cInputs/i2cInputs.ino"
 }

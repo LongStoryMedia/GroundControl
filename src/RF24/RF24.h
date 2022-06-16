@@ -17,12 +17,7 @@
 
 #include "RF24_config.h"
 
-#if defined (RF24_LINUX) || defined (LITTLEWIRE)
-    #include "utility/includes.h"
-#elif defined SOFTSPI
-    #include <DigitalIO.h>
-#endif
-
+#include "utility/includes.h"
 
 /**
  * @defgroup PALevel Power Amplifier level
@@ -33,7 +28,8 @@
  * - RF24::getPALevel()
  * @{
  */
-typedef enum {
+typedef enum
+{
     /**
      * (0) represents:
      * nRF24L01 | Si24R1 with<br>lnaEnabled = 1 | Si24R1 with<br>lnaEnabled = 0
@@ -77,7 +73,8 @@ typedef enum {
  * - RF24::getDataRate()
  * @{
  */
-typedef enum {
+typedef enum
+{
     /** (0) represents 1 Mbps */
     RF24_1MBPS = 0,
     /** (1) represents 2 Mbps */
@@ -97,7 +94,8 @@ typedef enum {
  * - RF24::disableCRC()
  * @{
  */
-typedef enum {
+typedef enum
+{
     /** (0) represents no CRC checksum is used */
     RF24_CRC_DISABLED = 0,
     /** (1) represents CRC 8 bit checksum is used */
@@ -110,37 +108,38 @@ typedef enum {
  * @}
  * @brief Driver class for nRF24L01(+) 2.4GHz Wireless Transceiver
  */
-class RF24 {
+class RF24
+{
 private:
-    #ifdef SOFTSPI
+#ifdef SOFTSPI
     SoftSPI<SOFT_SPI_MISO_PIN, SOFT_SPI_MOSI_PIN, SOFT_SPI_SCK_PIN, SPI_MODE> spi;
-    #elif defined (SPI_UART)
+#elif defined(SPI_UART)
     SPIUARTClass uspi;
-    #endif
+#endif
 
-    #if defined (RF24_LINUX) || defined (XMEGA_D3) || defined (RF24_RP2) /* XMEGA can use SPI class */
+#if defined(RF24_LINUX) || defined(XMEGA_D3) || defined(RF24_RP2) /* XMEGA can use SPI class */
     SPI spi;
-    #endif // defined (RF24_LINUX) || defined (XMEGA_D3)
-    #if defined (RF24_SPI_PTR)
-    _SPI* _spi;
-    #endif // defined (RF24_SPI_PTR)
-    #if defined (MRAA)
+#endif // defined (RF24_LINUX) || defined (XMEGA_D3)
+#if defined(RF24_SPI_PTR)
+    _SPI *_spi;
+#endif // defined (RF24_SPI_PTR)
+#if defined(MRAA)
     GPIO gpio;
-    #endif
+#endif
 
-    uint16_t ce_pin; /* "Chip Enable" pin, activates the RX or TX role */
-    uint16_t csn_pin; /* SPI Chip select */
+    uint16_t ce_pin;    /* "Chip Enable" pin, activates the RX or TX role */
+    uint16_t csn_pin;   /* SPI Chip select */
     uint32_t spi_speed; /* SPI Bus Speed */
-    #if defined (RF24_LINUX) || defined (XMEGA_D3) || defined (RF24_RP2)
-    uint8_t spi_rxbuff[32+1] ; //SPI receive buffer (payload max 32 bytes)
-    uint8_t spi_txbuff[32+1] ; //SPI transmit buffer (payload max 32 bytes + 1 byte for the command)
-    #endif
-    uint8_t status; /* The status byte returned from every SPI transaction */
-    uint8_t payload_size; /* Fixed size of payloads */
+#if defined(RF24_LINUX) || defined(XMEGA_D3) || defined(RF24_RP2)
+    uint8_t spi_rxbuff[32 + 1]; // SPI receive buffer (payload max 32 bytes)
+    uint8_t spi_txbuff[32 + 1]; // SPI transmit buffer (payload max 32 bytes + 1 byte for the command)
+#endif
+    uint8_t status;                   /* The status byte returned from every SPI transaction */
+    uint8_t payload_size;             /* Fixed size of payloads */
     uint8_t pipe0_reading_address[5]; /** Last address set on pipe 0 for reading. */
-    uint8_t config_reg; /* For storing the value of the NRF_CONFIG register */
-    bool _is_p_variant; /* For storing the result of testing the toggleFeatures() affect */
-    bool _is_p0_rx; /* For keeping track of pipe 0's usage in user-triggered RX mode. */
+    uint8_t config_reg;               /* For storing the value of the NRF_CONFIG register */
+    bool _is_p_variant;               /* For storing the result of testing the toggleFeatures() affect */
+    bool _is_p0_rx;                   /* For keeping track of pipe 0's usage in user-triggered RX mode. */
 
 protected:
     /**
@@ -169,7 +168,7 @@ protected:
      * @note This returns nothing. Older versions of this function returned the status
      * byte, but that it now saved to a private member on all SPI transactions.
      */
-    void read_register(uint8_t reg, uint8_t* buf, uint8_t len);
+    void read_register(uint8_t reg, uint8_t *buf, uint8_t len);
 
     /**
      * Read single byte from a register
@@ -180,7 +179,6 @@ protected:
     uint8_t read_register(uint8_t reg);
 
 public:
-
     /**
      * @name Primary public interface
      *
@@ -220,9 +218,7 @@ public:
      */
     RF24(uint32_t _spi_speed = RF24_SPI_SPEED);
 
-    #if defined (RF24_LINUX)
-    virtual ~RF24() {};
-    #endif
+    virtual ~RF24(){};
 
     /**
      * Begin operation of the chip
@@ -239,48 +235,6 @@ public:
      * - `false` if the MCU failed to communicate with the radio hardware
      */
     bool begin(void);
-
-    #if defined (RF24_SPI_PTR) || defined (DOXYGEN_FORCED)
-    /**
-     * Same as begin(), but allows specifying a non-default SPI bus to use.
-     *
-     * @note This function assumes the `SPI::begin()` method was called before to
-     * calling this function.
-     *
-     * @warning This function is for the Arduino platforms only
-     *
-     * @param spiBus A pointer or reference to an instantiated SPI bus object.
-     * The `_SPI` datatype is a "wrapped" definition that will represent
-     * various SPI implementations based on the specified platform.
-     * @see Review the [Arduino support page](md_docs_arduino.html).
-     *
-     * @return same result as begin()
-     */
-    bool begin(_SPI* spiBus);
-
-    /**
-     * Same as begin(), but allows dynamically specifying a SPI bus, CE pin,
-     * and CSN pin to use.
-     *
-     * @note This function assumes the `SPI::begin()` method was called before to
-     * calling this function.
-     *
-     * @warning This function is for the Arduino platforms only
-     *
-     * @param spiBus A pointer or reference to an instantiated SPI bus object.
-     * The `_SPI` datatype is a "wrapped" definition that will represent
-     * various SPI implementations based on the specified platform.
-     * @param _cepin The pin attached to Chip Enable on the RF module
-     * @param _cspin The pin attached to Chip Select (often labeled CSN) on the radio module.
-     * - For the Arduino Due board, the [Arduino Due extended SPI feature](https://www.arduino.cc/en/Reference/DueExtendedSPI)
-     * is not supported. This means that the Due's pins 4, 10, or 52 are not mandated options (can use any digital output pin) for the radio's CSN pin.
-     *
-     * @see Review the [Arduino support page](md_docs_arduino.html).
-     *
-     * @return same result as begin()
-     */
-    bool begin(_SPI* spiBus, uint16_t _cepin, uint16_t _cspin);
-    #endif // defined (RF24_SPI_PTR) || defined (DOXYGEN_FORCED)
 
     /**
      * Same as begin(), but allows dynamically specifying a CE pin
@@ -424,7 +378,7 @@ public:
      * }
      * @endcode
      */
-    void read(void* buf, uint8_t len);
+    void read(void *buf, uint8_t len);
 
     /**
      * Be sure to call openWritingPipe() first to set the destination
@@ -466,7 +420,7 @@ public:
      *   packet. This condition can only be reported if the auto-ack feature
      *   is on.
      */
-    bool write(const void* buf, uint8_t len);
+    bool write(const void *buf, uint8_t len);
 
     /**
      * New: Open a pipe for writing via byte array. Old addressing format retained
@@ -510,7 +464,7 @@ public:
      * to use (set with setAddressWidth()).
      */
 
-    void openWritingPipe(const uint8_t* address);
+    void openWritingPipe(const uint8_t *address);
 
     /**
      * Open a pipe for reading
@@ -556,7 +510,7 @@ public:
      * always write the number of bytes (for pipes 0 and 1) that the radio
      * addresses are configured to use (set with setAddressWidth()).
      */
-    void openReadingPipe(uint8_t number, const uint8_t* address);
+    void openReadingPipe(uint8_t number, const uint8_t *address);
 
     /**@}*/
     /**
@@ -659,10 +613,10 @@ public:
      *
      * This function is not available in the python wrapper because it is intended for
      * use on processors with very limited available resources.
-     * 
+     *
      * @remark
      * This function uses much less ram than other `*print*Details()` methods.
-     * 
+     *
      * @code
      * uint8_t encoded_details[43] = {0};
      * radio.encodeRadioDetails(encoded_details);
@@ -671,7 +625,7 @@ public:
      * @param encoded_status The uint8_t array that RF24 radio details are
      * encoded into. This array must be at least 43 bytes in length; any less would surely
      * cause undefined behavior.
-     * 
+     *
      * Registers names and/or data corresponding to the index of the `encoded_details` array:
      * | index | register/data |
      * |------:|:--------------|
@@ -765,7 +719,7 @@ public:
      * - `false` if there is nothing available in the RX FIFO because it is
      *   empty.
      */
-    bool available(uint8_t* pipe_num);
+    bool available(uint8_t *pipe_num);
 
     /**
      * Use this function to check if the radio's RX FIFO levels are all
@@ -842,7 +796,7 @@ public:
      * radio.write(buffer, False)  # False = the multicast parameter
      * @endcode
      */
-    bool write(const void* buf, uint8_t len, const bool multicast);
+    bool write(const void *buf, uint8_t len, const bool multicast);
 
     /**
      * This will not block until the 3 FIFO buffers are filled with data.
@@ -888,7 +842,7 @@ public:
      * radio.writeFast(buffer)
      * @endcode
      */
-    bool writeFast(const void* buf, uint8_t len);
+    bool writeFast(const void *buf, uint8_t len);
 
     /**
      * WriteFast for single NOACK writes. Optionally disable
@@ -918,7 +872,7 @@ public:
      * radio.writeFast(buffer, False)  # False = the multicast parameter
      * @endcode
      */
-    bool writeFast(const void* buf, uint8_t len, const bool multicast);
+    bool writeFast(const void *buf, uint8_t len, const bool multicast);
 
     /**
      * This function extends the auto-retry mechanism to any specified duration.
@@ -961,7 +915,7 @@ public:
      *   transmit. This condition can only be reported if the auto-ack feature
      *   is on.
      */
-    bool writeBlocking(const void* buf, uint8_t len, uint32_t timeout);
+    bool writeBlocking(const void *buf, uint8_t len, uint32_t timeout);
 
     /**
      * This function should be called as soon as transmission is finished to
@@ -1067,7 +1021,7 @@ public:
      *   already full or the ACK payload feature is not enabled using
      *   enableAckPayload().
      */
-    bool writeAckPayload(uint8_t pipe, const void* buf, uint8_t len);
+    bool writeAckPayload(uint8_t pipe, const void *buf, uint8_t len);
 
     /**
      * Call this when you get an Interrupt Request (IRQ) to find out why
@@ -1099,7 +1053,7 @@ public:
      * print("tx_ds: {}, tx_df: {}, rx_dr: {}".format(tx_ds, tx_df, rx_dr))
      * @endcode
      */
-    void whatHappened(bool& tx_ok, bool& tx_fail, bool& rx_ready);
+    void whatHappened(bool &tx_ok, bool &tx_fail, bool &rx_ready);
 
     /**
      * Non-blocking write to the open writing pipe used for buffered writes
@@ -1139,7 +1093,7 @@ public:
      * #     True means initiate transmission (startTx parameter)
      * @endcode
      */
-    void startFastWrite(const void* buf, uint8_t len, const bool multicast, bool startTx = 1);
+    void startFastWrite(const void *buf, uint8_t len, const bool multicast, bool startTx = 1);
 
     /**
      * Non-blocking write to the open writing pipe
@@ -1174,7 +1128,7 @@ public:
      * radio.startWrite(buffer, False)  # False = the multicast parameter
      * @endcode
      */
-    bool startWrite(const void* buf, uint8_t len, const bool multicast);
+    bool startWrite(const void *buf, uint8_t len, const bool multicast);
 
     /**
      * The function will instruct the radio to re-use the payload in the
@@ -1271,7 +1225,7 @@ public:
      */
     void closeReadingPipe(uint8_t pipe);
 
-    #if defined (FAILURE_HANDLING)
+#if defined(FAILURE_HANDLING)
     /**
      *
      * If a failure has been detected, it usually indicates a hardware issue. By default the library
@@ -1303,7 +1257,7 @@ public:
      * @endcode
      */
     bool failureDetected;
-    #endif // defined (FAILURE_HANDLING)
+#endif // defined (FAILURE_HANDLING)
 
     /**@}*/
     /**
@@ -1836,7 +1790,6 @@ public:
     bool isAckPayloadAvailable(void);
 
 private:
-
     /**@}*/
     /**
      * @name Low-level internal interface.
@@ -1894,7 +1847,7 @@ private:
      * @return Nothing. Older versions of this function returned the status
      * byte, but that it now saved to a private member on all SPI transactions.
      */
-    void write_register(uint8_t reg, const uint8_t* buf, uint8_t len);
+    void write_register(uint8_t reg, const uint8_t *buf, uint8_t len);
 
     /**
      * Write a single byte to a register
@@ -1919,7 +1872,7 @@ private:
      * @return Nothing. Older versions of this function returned the status
      * byte, but that it now saved to a private member on all SPI transactions.
      */
-    void write_payload(const void* buf, uint8_t len, const uint8_t writeType);
+    void write_payload(const void *buf, uint8_t len, const uint8_t writeType);
 
     /**
      * Read the receive payload
@@ -1931,7 +1884,7 @@ private:
      * @return Nothing. Older versions of this function returned the status
      * byte, but that it now saved to a private member on all SPI transactions.
      */
-    void read_payload(void* buf, uint8_t len);
+    void read_payload(void *buf, uint8_t len);
 
     /**
      * Retrieve the current status of the chip
@@ -1940,7 +1893,7 @@ private:
      */
     uint8_t get_status(void);
 
-    #if !defined (MINIMAL)
+#if !defined(MINIMAL)
 
     /**
      * Decode and print the given status to stdout
@@ -1971,7 +1924,7 @@ private:
      * @param reg Which register. Use constants from nRF24L01.h
      * @param qty How many successive registers to print
      */
-    void print_byte_register(const char* name, uint8_t reg, uint8_t qty = 1);
+    void print_byte_register(const char *name, uint8_t reg, uint8_t qty = 1);
 
     /**
      * Print the name and value of a 40-bit address register to stdout
@@ -1984,7 +1937,7 @@ private:
      * @param reg Which register. Use constants from nRF24L01.h
      * @param qty How many successive registers to print
      */
-    void print_address_register(const char* name, uint8_t reg, uint8_t qty = 1);
+    void print_address_register(const char *name, uint8_t reg, uint8_t qty = 1);
 
     /**
      * Put the value of a 40-bit address register into a char array
@@ -1999,7 +1952,7 @@ private:
      * @return The total number of characters written to the given buffer.
      */
     uint8_t sprintf_address_register(char *out_buffer, uint8_t reg, uint8_t qty = 1);
-    #endif
+#endif
 
     /**
      * Turn on or off the special features of the chip
@@ -2009,11 +1962,11 @@ private:
      */
     void toggle_features(void);
 
-    #if defined (FAILURE_HANDLING) || defined (RF24_LINUX)
+#if defined(FAILURE_HANDLING) || defined(RF24_LINUX)
 
     void errNotify(void);
 
-    #endif
+#endif
 
     /**
      * @brief Manipulate the @ref Datarate and txDelay
@@ -2033,9 +1986,7 @@ private:
     inline uint8_t _pa_level_reg_value(uint8_t level, bool lnaEnable);
 
     /**@}*/
-
 };
-
 
 /**
  * @example{lineno} examples/GettingStarted/GettingStarted.ino
