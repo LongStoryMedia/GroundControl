@@ -1,4 +1,6 @@
 #include "Controls.h"
+#include <string.h>
+#include <stdlib.h>
 
 Input Controls::parse(char *raw)
 {
@@ -23,8 +25,68 @@ Input Controls::parse(char *raw)
     // {
     //     lockedThrust = 0;
     // }
+    char *thrust = "";
+    char *yaw = "";
+    char *pitch = "";
+    char *roll = "";
+    char *iPtr = "";
     for (int i = 0; i < RAW_INPUT_DATA_LEN; i++)
     {
+        if (raw[i] == (char)"t")
+        {
+            iPtr = "t";
+            i++;
+        }
+        if (raw[i] == (char)"y")
+        {
+            iPtr = "y";
+            i++;
+        }
+        if (raw[i] == (char)"p")
+        {
+            iPtr = "p";
+            i++;
+        }
+        if (raw[i] == (char)"r")
+        {
+            iPtr = "r";
+            i++;
+        }
+        if (raw[i] == (char)"a")
+        {
+            iPtr = "a";
+            i++;
+        }
+        if (raw[i] == (char)"|")
+        {
+            break;
+        }
+        if (iPtr == "t")
+        {
+            strcat(thrust, &(raw[i]));
+        }
+        if (iPtr == "y")
+        {
+            strcat(yaw, &(raw[i]));
+        }
+        if (iPtr == "p")
+        {
+            strcat(pitch, &(raw[i]));
+        }
+        if (iPtr == "r")
+        {
+            strcat(roll, &(raw[i]));
+        }
+        if (iPtr == "a")
+        {
+            input.lockAlt = atoi(&(raw[i]));
+        }
     }
+
+    input.thrust = atoi(thrust);
+    input.yaw = atoi(yaw);
+    input.pitch = atoi(pitch);
+    input.roll = atoi(roll);
+
     return input;
 }

@@ -29,6 +29,7 @@ void postI2c()
   Wire.write(roll);
   Wire.write("a");
   Wire.write(lockAlt);
+  Wire.write("|");
 }
 
 void setup()

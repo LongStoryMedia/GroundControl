@@ -104,7 +104,7 @@ int main(void)
       // const char *inputData = (const char[1])buffer[0];
       // printf((const char *)buffer[0]);
       Input input = controls.parse(buffer);
-      std::cout << buffer;
+      std::cout << input.thrust;
       tx.sendPacket(input);
     }
   }

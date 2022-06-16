@@ -1,7 +1,7 @@
 #ifndef _CONTROLS_LOCAL_H
 #define _CONTROLS_LOCAL_H
 
-#define RAW_INPUT_DATA_LEN 21
+#define RAW_INPUT_DATA_LEN 22
 
 #include "Input.h"
 

@@ -23,8 +23,8 @@ void Tx::init()
 
     radio.stopListening(); // put radio in TX mode
 
-    // radio.enableDynamicAck();
-    // radio.setAutoAck(true);
+    radio.enableDynamicAck();
+    radio.setAutoAck(true);
 
     failures = 0;
     // For debugging info

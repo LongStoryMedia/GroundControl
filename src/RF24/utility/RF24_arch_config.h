@@ -20,7 +20,7 @@
 #include <time.h>
 #include <string.h>
 #include <sys/time.h>
-#define SERIAL_DEBUG
+// #define SERIAL_DEBUG
 //#define RF24_SPI_SPEED RF24_SPIDEV_SPEED
 
 #define _BV(x) (1 << (x))
